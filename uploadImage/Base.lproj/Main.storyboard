@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +13,57 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="uploadImage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnY-8l-1b0">
+                                <rect key="frame" x="139" y="227.5" width="97" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Select Image"/>
+                                <connections>
+                                    <action selector="selectImageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aED-rk-jXu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-qT-aBh">
+                                <rect key="frame" x="136" y="427.5" width="103" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadImageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bP7-QA-cnD"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mhl-UY-gSQ">
+                                <rect key="frame" x="127" y="283.5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="2z9-GM-dKy"/>
+                                    <constraint firstAttribute="width" constant="120" id="PcN-Id-qHK"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jaM-5D-ctR">
+                                <rect key="frame" x="255" y="433" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jaM-5D-ctR" firstAttribute="centerY" secondItem="SGB-qT-aBh" secondAttribute="centerY" id="B86-nT-qDI"/>
+                            <constraint firstItem="Mhl-UY-gSQ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="P4V-mr-WMc"/>
+                            <constraint firstItem="jaM-5D-ctR" firstAttribute="leading" secondItem="SGB-qT-aBh" secondAttribute="trailing" constant="16" id="Pmc-5l-oMp"/>
+                            <constraint firstItem="AnY-8l-1b0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RqR-Oc-gZ0"/>
+                            <constraint firstItem="SGB-qT-aBh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="100" id="WKj-r4-1g1"/>
+                            <constraint firstItem="AnY-8l-1b0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-100" id="bkv-Ue-NjA"/>
+                            <constraint firstItem="Mhl-UY-gSQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cYp-HC-0Um"/>
+                            <constraint firstItem="SGB-qT-aBh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="n4w-u0-Yws"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="selectImageButton" destination="AnY-8l-1b0" id="IL7-8q-HWQ"/>
+                        <outlet property="tmpImageView" destination="Mhl-UY-gSQ" id="ZTt-2W-Wya"/>
+                        <outlet property="uploadActivityIndicator" destination="jaM-5D-ctR" id="Phr-9Q-VWD"/>
+                        <outlet property="uploadImageButton" destination="SGB-qT-aBh" id="w5t-Lw-veO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
