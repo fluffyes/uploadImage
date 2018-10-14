@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         var data = Data()
         
         // Add the field name and field value to the raw http request data
+        // put two dashes ("-") in front of boundary string to separate different field/values
         data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         data.append("Content-Disposition: form-data; name=\"\(fieldName)\"\r\n\r\n".data(using: .utf8)!)
         data.append("\(fieldValue)".data(using: .utf8)!)
